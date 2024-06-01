@@ -44,19 +44,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
 import com.example.lf.model.Data
 import com.example.lf.model.MovieList
 import com.example.lf.viewmodel.MovieListViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(onClick : (id : Int) -> Unit) {
 
     val movieListViewModel : MovieListViewModel = hiltViewModel()
-    val movieList: State<MovieList> = movieListViewModel.movieList.collectAsState()
+    val state = movieListViewModel.state
 
-    if(movieList.value.data.isEmpty()){
+    if(state.movies.isEmpty()){
         Box(modifier = Modifier.fillMaxSize(1f),
             contentAlignment = Alignment.Center) {
             Text(text = "Loading...", style = MaterialTheme.typography.titleMedium)
@@ -68,8 +69,11 @@ fun HomeScreen(onClick : (id : Int) -> Unit) {
                 .padding(5.dp)
                 .fillMaxSize()
                 .background(Color.Transparent)) {
-            items(movieList.value.data){data ->
-                ItemUI(data, onClick)
+            items(state.movies.size){
+                if(it>= state.movies.size -1 && !state.endPage && !state.isLoading){
+                    movieListViewModel.loadMoreMovies()
+                }
+                ItemUI(state.movies[it], onClick)
             }
         }
     }
@@ -115,35 +119,3 @@ fun ItemUI(data: Data, onClick: (id: Int) -> Unit) {
         }
     }
 }
-
-@Composable
-fun CardHolder(name : String, id: Int, onClick : (id : Int) -> Unit) {
-
-    Box(modifier = Modifier
-        .padding(4.dp)
-        .size(160.dp)
-        .clickable {
-            onClick(id)
-        }
-        .clip(RoundedCornerShape(8.dp))
-        .border(1.dp, Color(0XFEEEEE)),
-        contentAlignment = Alignment.BottomCenter
-    ){
-        Text(text = name,
-            fontSize = 18.sp,
-            color = Color.Black,
-            modifier = Modifier.padding(0.dp,20.dp),
-            style = MaterialTheme.typography.bodyMedium
-        )
-    }
-}
-//else{
-//        LazyVerticalGrid(columns = GridCells.Fixed(2),
-//            contentPadding = PaddingValues(8.dp),
-//            verticalArrangement = Arrangement.SpaceAround
-//        ) {
-//            items(movieList.value.data){
-//                CardHolder(name = it.title, id = it.id, onClick)
-//            }
-//        }
-//    }

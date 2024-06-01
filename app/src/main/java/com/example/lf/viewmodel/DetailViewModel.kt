@@ -1,5 +1,8 @@
 package com.example.lf.viewmodel
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,13 +21,19 @@ class DetailViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) :ViewModel() {
 
-    val movie: StateFlow<Movie>
-        get() = repository.movie
+    var state by mutableStateOf(MovieState())
 
     init {
         viewModelScope.launch {
             val movie_id = savedStateHandle.get<Int>("movie_id") ?: 1
-            repository.getMovieDetails(movie_id)
+            val response = repository.getMovieDetails(movie_id)
+            state = state.copy(
+                movie = response.body()!!
+            )
         }
     }
 }
+
+data class MovieState(
+    val movie: Movie = Movie("","","","", emptyList(),0, emptyList(),"","","","","","","","","","","","","")
+)

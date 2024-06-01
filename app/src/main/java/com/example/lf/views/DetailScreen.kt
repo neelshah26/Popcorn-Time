@@ -48,29 +48,29 @@ import com.example.lf.viewmodel.DetailViewModel
 fun DetailScreen() {
 
     val detailViewModel : DetailViewModel = hiltViewModel()
-    val movie: State<Movie> = detailViewModel.movie.collectAsState()
+    val state_movie = detailViewModel.state.movie
 
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.TopCenter
     ) {
-        MoviePoster(movie.value)
+        MoviePoster(state_movie)
         Column(
             Modifier
                 .padding(start = 20.dp, end = 20.dp, bottom = 50.dp)
                 .align(Alignment.BottomCenter),
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            Text(text = movie.value.title,
+            Text(text = state_movie.title,
                 modifier = Modifier.fillMaxWidth(),
                 fontSize = 38.sp,
                 color = Color.White,
                 lineHeight = 40.sp,
                 textAlign = TextAlign.Center)
 
-            MovieAttributes(movie.value, modifier = Modifier)
-            TextBlocks(icon = Icons.Filled.Info, heading = "Movie Plot", text= movie.value.plot)
-            TextBlocks(icon = Icons.Filled.Person, heading = "Movie Actors", text= movie.value.actors)
+            MovieAttributes(state_movie, modifier = Modifier)
+            TextBlocks(icon = Icons.Filled.Info, heading = "Movie Plot", text= state_movie.plot)
+            TextBlocks(icon = Icons.Filled.Person, heading = "Movie Actors", text= state_movie.actors)
         }
     }
 
@@ -156,52 +156,3 @@ fun MoviePoster(value: Movie) {
     }
 }
 
-@Composable
-fun EachTeam(movie : Movie) {
-    
-    Card(modifier = Modifier
-        .fillMaxWidth()
-        .padding(16.dp),
-        border = BorderStroke(1.dp, Color(0XFEEEE))
-    ){
-        Column {
-            Text(text = "ID: " + movie.id,
-                fontSize = 18.sp,
-                color = Color.Black,
-                modifier = Modifier.padding(0.dp,20.dp),
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(text = "Title: " + movie.title,
-                fontSize = 18.sp,
-                color = Color.Black,
-                modifier = Modifier.padding(0.dp,20.dp),
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(text = "Year: " + movie.year,
-                fontSize = 18.sp,
-                color = Color.Black,
-                modifier = Modifier.padding(0.dp,20.dp),
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(text = "Actors: " + movie.actors,
-                fontSize = 18.sp,
-                color = Color.Black,
-                modifier = Modifier.padding(0.dp,20.dp),
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(text = "Country: " + movie.country,
-                fontSize = 18.sp,
-                color = Color.Black,
-                modifier = Modifier.padding(0.dp,20.dp),
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(text = "Rating: " + movie.imdb_rating,
-                fontSize = 18.sp,
-                color = Color.Black,
-                modifier = Modifier.padding(0.dp,20.dp),
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
-    }
-}
-//EachTeam(movie = movie.value)
