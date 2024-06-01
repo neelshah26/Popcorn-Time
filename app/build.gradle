@@ -88,5 +88,8 @@ dependencies {
     //Compose Foundation
     implementation "androidx.compose.foundation:foundation:1.4.3"
 
+    implementation ("io.coil-kt:coil-compose:2.4.0")
+    implementation ("com.google.accompanist:accompanist-coil:0.10.0")
+
 
 }
