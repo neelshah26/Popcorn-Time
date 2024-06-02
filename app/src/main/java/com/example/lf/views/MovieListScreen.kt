@@ -58,10 +58,7 @@ fun HomeScreen(onClick : (id : Int) -> Unit) {
     val state = movieListViewModel.state
 
     if(state.movies.isEmpty()){
-        Box(modifier = Modifier.fillMaxSize(1f),
-            contentAlignment = Alignment.Center) {
-            Text(text = "Loading...", style = MaterialTheme.typography.titleMedium)
-        }
+        LoadingScreen()
     }
     else{
         LazyVerticalGrid(columns = GridCells.Fixed(2),
@@ -75,9 +72,20 @@ fun HomeScreen(onClick : (id : Int) -> Unit) {
                 }
                 ItemUI(state.movies[it], onClick)
             }
+            item(state.isLoading){
+                LoadingScreen()
+            }
         }
     }
 
+}
+
+@Composable
+fun LoadingScreen() {
+    Box(modifier = Modifier.fillMaxSize(1f),
+        contentAlignment = Alignment.Center) {
+        Text(text = "Loading...", style = MaterialTheme.typography.titleMedium)
+    }
 }
 
 @OptIn(ExperimentalFoundationApi::class)
