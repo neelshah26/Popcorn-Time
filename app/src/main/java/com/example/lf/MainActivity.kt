@@ -18,6 +18,7 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -59,7 +60,7 @@ class MainActivity : ComponentActivity() {
             LFTheme {
                 Scaffold(
                     topBar = {
-                        TopAppBar(title = { Text(text = "Netflix", color = Color.Black) })
+                        TopAppBar(title = { Text(text = "Popcorn Time", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.headlineMedium) })
                     }
                 ) {
                     Box(modifier = Modifier.padding(it)){
@@ -72,6 +73,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
+// Navigation Component
 @Composable
 fun App() {
 

@@ -7,11 +7,6 @@ import com.example.lf.model.MovieList
 object Constants {
     const val BASE_URL = "https://moviesapi.ir/api/v1/"
 
-    val empty_MovieList: MovieList = MovieList(
-        data = emptyList(),
-        metadata = Metadata("",0,0,0)
-    )
-
     val empty_Movie: Movie = Movie(
         actors = "",
         awards = "",
@@ -35,7 +30,7 @@ object Constants {
         year = ""
     )
 
-    // isPalindrome() used only for testing
+    // isPalindrome() used only for showing unit testing
     fun isPalindrome(s :String) : Boolean{
         val ans = true
         var i=0
