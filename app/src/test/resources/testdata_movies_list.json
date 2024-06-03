@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "The Shawshank Redemption",
+      "poster": "https://moviesapi.ir/images/tt0111161_poster.jpg",
+      "year": "1994",
+      "country": "USA",
+      "imdb_rating": "9.3",
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "images": [
+        "https://moviesapi.ir/images/tt0111161_screenshot1.jpg",
+        "https://moviesapi.ir/images/tt0111161_screenshot2.jpg",
+        "https://moviesapi.ir/images/tt0111161_screenshot3.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "The Godfather",
+      "poster": "https://moviesapi.ir/images/tt0068646_poster.jpg",
+      "year": "1972",
+      "country": "USA",
+      "imdb_rating": "9.2",
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "images": [
+        "https://moviesapi.ir/images/tt0068646_screenshot1.jpg",
+        "https://moviesapi.ir/images/tt0068646_screenshot2.jpg",
+        "https://moviesapi.ir/images/tt0068646_screenshot3.jpg"
+      ]
+    }
+  ],
+  "metadata": {
+    "current_page": "1",
+    "per_page": 2,
+    "page_count": 2,
+    "total_count": 4
+  }
+}

@@ -12,6 +12,10 @@ android {
     namespace 'com.example.lf'
     compileSdk 34
 
+    testOptions{
+        unitTests.includeAndroidResources = true
+    }
+
     defaultConfig {
         applicationId "com.example.lf"
         minSdk 23
@@ -37,6 +41,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '17'
+        freeCompilerArgs = ['-Xjvm-default=compatibility']
     }
     buildFeatures {
         compose true
@@ -96,5 +101,14 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation "androidx.paging:paging-compose:$paging_version"
 
+    //testing
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+    androidTestImplementation "androidx.arch.core:core-testing:2.2.0"
+
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.0'
+
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.0'
+    testImplementation 'org.mockito:mockito-core:3.6.0'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
 
 }

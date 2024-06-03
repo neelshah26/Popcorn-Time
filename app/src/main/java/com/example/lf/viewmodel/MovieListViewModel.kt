@@ -5,15 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.cachedIn
-import com.example.lf.PaginationFactory
+import com.example.lf.pagination.PaginationFactory
 import com.example.lf.model.Data
-import com.example.lf.model.MovieList
 import com.example.lf.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -43,17 +38,6 @@ class MovieListViewModel @Inject constructor(
             )
         }
     )
-
-//    init {
-//        viewModelScope.launch {
-//            val response = repository.getMovieList(state.page)
-//            state = state.copy(
-//                movies = response.body()!!.data,
-//                page = response.body()!!.metadata.current_page.toInt()
-//            )
-//        }
-//    }
-
     init {
         loadMoreMovies()
     }

@@ -1,4 +1,4 @@
-package com.example.lf
+package com.example.lf.pagination
 
 interface Pagination<Key, Item> {
 
