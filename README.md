@@ -19,6 +19,9 @@ Popcorn Time was born out of a passion for cinema and a desire to create a moder
 
 <img src="https://github.com/neelshah26/Popcorn-Time/blob/master/ss2.jpg" width="300"/> <img src="https://github.com/neelshah26/Popcorn-Time/blob/master/ss1.jpg" width="300"/> 
 
+## Download
+You can download the APK of latest version of the Popcorn Time app [here](https://github.com/neelshah26/Popcorn-Time/blob/master/app-debug.apk).
+
 ## Technologies Used
 - **Jetpack Compose**: A modern UI toolkit for building native Android apps with Kotlin.
 - **Kotlin**: The official programming language for Android development, known for its conciseness and safety features.
